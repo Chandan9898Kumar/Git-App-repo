@@ -7,6 +7,9 @@ const MyFunct = () => {
 
     const SerachInput = async (e) => {
         setInputVal(e.target.value)
+        if(e.target.value===''){
+            return 
+        }
         await fetch(`${API_URL}/search/users?q=${e.target.value}`)
             .then(response => response.json())
             .then((data) => {
@@ -35,7 +38,7 @@ const MyFunct = () => {
             </div>
 
             {
-                inputVal === '' ? ''
+                inputVal === '' ? 'No Results Found'
                     :
                     <>
                         {!Api_Data?.length  && Api_Data===undefined? "No Result Found Please Search valid user"
